@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::middleware('auth:sanctum')->get('/athenticated', function () {
+    return true;
+});
 
 Route::apiResources([
     '/foos' => \App\Http\Controllers\Api\v1\Foo\FoosController::class,
@@ -24,4 +27,9 @@ Route::apiResources([
     '/idrequests' => \App\Http\Controllers\Auth\FindIDsController::class,
     '/passrequests' => \App\Http\Controllers\Auth\FindPasssController::class,
     '/players' => \App\Http\Controllers\Api\v1\Player\PlayersController::class,
+    '/login' => \App\Http\Controllers\Auth\LoginController::class,
+    '/blog' => \App\Http\Controllers\Blog\BlogController::class,
 ]);
+
+//Route::get('/login', [LoginController::class, 'index']) -> name('login');
+Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'login']);

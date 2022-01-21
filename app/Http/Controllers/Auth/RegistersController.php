@@ -42,7 +42,6 @@ class RegistersController extends Controller
         Log::info(__METHOD__);
 
         $outs = User::create([
-            'id' => $request->input('id'),
             'name' => $request->input('name'),
             'user_id' => $request->input('user_id'),
             'email' => $request->input('email'),
