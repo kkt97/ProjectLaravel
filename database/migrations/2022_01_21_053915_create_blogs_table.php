@@ -18,6 +18,8 @@ class CreateBlogsTable extends Migration
 
             $table->string('title');
 
+            $table->text('content');
+
             $table->unsignedBigInteger('user_id')->comment('');
 
             $table->foreign('user_id')->references('id')->on('users');

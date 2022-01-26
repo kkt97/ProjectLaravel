@@ -17,9 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::middleware('auth:sanctum')->get('/athenticated', function () {
-    return true;
-});
+//Route::middleware('auth:sanctum')->get('/login/authenticated', function () {
+//    return true;
+//});
+
+//Route::get('/login', [LoginController::class, 'index']) -> name('login');
+Route::post('/login/login', [\App\Http\Controllers\Auth\LoginController::class, 'login']);
+Route::post('/login/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout']);
 
 Route::apiResources([
     '/foos' => \App\Http\Controllers\Api\v1\Foo\FoosController::class,
@@ -30,6 +34,3 @@ Route::apiResources([
     '/login' => \App\Http\Controllers\Auth\LoginController::class,
     '/blog' => \App\Http\Controllers\Blog\BlogController::class,
 ]);
-
-//Route::get('/login', [LoginController::class, 'index']) -> name('login');
-Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'login']);

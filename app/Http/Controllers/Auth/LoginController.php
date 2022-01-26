@@ -62,11 +62,15 @@ class LoginController extends Controller
 
         if (Auth::attempt($request->only('user_id', 'password'))) {
 
-            return response()->json(Auth::user(), 200);
+            Log::info(2);
+            Log::info(\auth()->id());
+
+//            return response()->json(Auth::user(), 200);
+            return response()->json(['foo'], 200, [], JSON_PRETTY_PRINT);
         }
-        throw ValidationException::withMessages([
-            'user_id' => ['The provided credentials are incorect.']
-        ]);
+//        throw ValidationException::withMessages([
+//            'user_id' => ['The provided credentials are incorect.']
+//        ]);
     }
 
     public function logout()

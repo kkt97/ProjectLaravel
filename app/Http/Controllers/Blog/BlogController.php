@@ -24,7 +24,7 @@ class BlogController extends Controller
 
 //        $outs = Blog::with('users')->get();
 
-        $outs = Blog::with('user')->get();
+        $outs = Blog::with('user')->paginate(10);
 
 //        $outs = Blog::all();
 
